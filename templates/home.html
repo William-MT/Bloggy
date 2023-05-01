@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+<main class="container-fluid row mb-3">
+
+    <aside class="col-lg-3 col-md-3 d-none d-md-block">
+        {% include 'base/topics_component.html' %}
+
+    </aside>
+
+    <section class="col-lg-6 col-md-9 col-sm-12 text-white">
+        <h3 class=" d-flex ">{{ post_count }} availabe <a href="{% url 'create-post' %}" class="p-1 text-end text-white bglight rounded-pill">+ Create Post</a></h3>
+        {% include 'base/feed_component.html' %}
+
+    </section>
+
+    <aside class="col-lg-3 d-none d-lg-block">
+
+        {% include 'base/activity_component.html' %}
+    </aside>
+</main>
+{% endblock %}

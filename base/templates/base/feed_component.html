@@ -1,0 +1,22 @@
+<div>
+    {% for post in posts %}
+    <article class="bgradient row g-0  rounded overflow-hidden flex-md-row mb-4 shadow-lg h-md-250 position-relative bd">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-white ">{{ post.topic.name }}</strong>
+            <h3 class="mb-0"><a href="{% url 'post' post.id %}" class="text-white">{{ post.name }}</a></h3>
+            <div class="mb-1 text-white ">{{post.created|timesince}} ago</div>
+            <p class="mb-auto text-white">{{ post.description }}</p>
+            <a href="{% url 'post' post.id %}" class=" text-white">Continue reading</a>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center ">
+            {% if request.user == post.user %}
+            <div class="btn-group m-3">
+
+                <a href="{% url 'delete-post' post.id %}" class="text-white"><button type="button" class="btn btn-outline-light me-2">Delete</button></a>
+                <a href="{% url 'update-post' post.id %}" class="text-white"><button type="button" class="btn btn-outline-light me-2">Edit</button></a>
+            </div>{% endif %}
+        </div>
+    </article>
+    {% endfor %}
+</div>

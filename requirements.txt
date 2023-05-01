@@ -1,0 +1,16 @@
+asgiref==3.6.0
+certifi==2022.12.7
+distlib==0.3.6
+Django==4.2
+django-cors-headers==3.14.0
+djangorestframework==3.14.0
+filelock==3.9.0
+Pillow==9.5.0
+pipenv==2023.2.18
+platformdirs==3.1.0
+pytz==2023.3
+sqlparse==0.4.3
+tzdata==2022.7
+virtualenv==20.20.0
+virtualenv-clone==0.5.7
+whitenoise==6.4.0

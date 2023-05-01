@@ -1,0 +1,20 @@
+<div>
+    <h3>Browse Topics</h3>
+    <div class=" d-grid gap-2 w-auto bgradient rounded-3">
+        <div class="position-relative p-3 border-bottom">
+            <strong class="fw-semibold">   <a href="{% url 'home' %}" class="text-white">All</a></strong>
+            <span class="d-block text-white small opacity-75 ">{{topics.count}} Available</span>
+        </div>
+        {% for topic in topics %}
+        <div class="position-relative  p-3 border-bottom ">
+            <strong class="fw-semibold"> <a href="{% url 'home' %}?q={{topic.name}}" class="text-white">{{topic.name}} <span></span></a></strong>
+            <span class="d-block text-white small opacity-75">{{topic.post_set.all.count}} Available</span>
+        </div>
+        {% endfor %}
+        <div class="position-relative  p-3 border-bottom ">
+            <strong class="fw-semibold"><a href="{% url 'topics' %}" class="text-white">More
+            </a></strong>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="d-flex text-white align-items-center text-center my-5 container-fluid justify-content-center ">
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you eant to delete "{{obj}}"?</p>
+        <a href="{% url 'home' %}" class="text-white"><button type="button" class="btn btn-outline-primary me-2">Go Back</button></a>
+        <button type="submit" class="btn btn-outline-warning me-2">Confirm</button>
+
+    </form>
+
+</div>
+
+{% endblock content %}
