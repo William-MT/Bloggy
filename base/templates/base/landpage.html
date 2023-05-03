@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>LandPage</title>
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="d-flex h-100 p-1 text-bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h1 class="float-md-start m-1" style="font-size:3em">Bloggy</h1>
+
+            </div>
+        </header>
+
+        <main class="mb-5 mx-1 p-3 rounded-3 bgradient col-lg-6">
+            <h1 class="">Get Connected with Others... </h1>
+            <p>
+                A site to share your ideas and nurture with others. Take your time time in this unforgettable moments.</p>
+            <p class="lead">
+                <a href="{% url 'home' %}" class="btn btn-lg btn-outline-light  border-white bglight rounded-pill">Get Started...</a>
+            </p>
+        </main>
+
+    </div>
+
+    <img src="{% static 'nightflowers.jpg' %}" class="bgg">
+
+    <style>
+        .bgradient {
+            background-color: rgba(168, 164, 164, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .bgg {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            max-width: 200vw;
+            max-height: 200vh;
+            object-fit: cover;
+        }
+        
+        .cover-container {
+            max-width: 42em;
+        }
+        /*
+ * Header
+ */
+    </style>
+
+</body>
+
+</html>

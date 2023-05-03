@@ -58,6 +58,12 @@ def registerPage(req):
     return render(req, 'base/login_register.html',{'form':form})
 
 
+def landpage(req):
+    print('heloo')
+
+    return render(req, 'base/landpage.html')
+
+
 def home(req):
     q = req.GET.get('q') if req.GET.get('q') != None else ''
     posts = Post.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
@@ -74,7 +80,7 @@ def home(req):
 
 def post(req, pk):
     post = Post.objects.get(id=pk)
-    vtopic = Topic.objects.all()
+    topics = Topic.objects.all()
     pmessages = post.message_set.all().order_by('-created')
     participants = post.participants.all()
 
@@ -82,12 +88,12 @@ def post(req, pk):
         message = Message.objects.create(
             user=req.user, post=post, body = req.POST.get('body')
         )
-        post.participants.add(req.user)
+        # post.participants.add(req.user)
         return redirect('post', pk=post.id)
     context = {
         'post': post,
         'pmessages':pmessages,
-        'topics':vtopic,
+        'topics':topics,
         'participants':participants,
             }
     return render(req, 'base/post.html', context)
@@ -155,17 +161,6 @@ def deleteMessage(req, pk):
         return redirect('home')
     return render(req, 'base/delete.html', {'obj':message})
 
-
-@login_required(login_url='login')
-def createMessage(req):
-    if req.method == 'POST':
-        user = req.user
-        post = req.post
-        body = req.POST.get('body')
-        form = MessageForm(req.POST)
-        if form.is_valid():
-            message = form.save()
-            return redirect('home')
 
 def topicsPage(req):
     q = req.GET.get('q') if req.GET.get('q') != None else ''
