@@ -13,15 +13,30 @@
 
 <body class="d-flex h-100 p-1 text-bg-dark">
 
-    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+    <div class="cover-container d-flex w-100 h-100 mx-auto px-1 flex-column">
         <header class="mb-auto">
-            <div>
-                <h1 class="float-md-start m-1" style="font-size:3em">Bloggy</h1>
-
-            </div>
+            <nav class="navbar navbar-expand-md navbar-dark  rounded-5 bgradient">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/home">Bloggy</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                        </ul>
+                        <a href="/login" class="btn btn-md btn-outline-light  border-white bglight rounded-pill">SignIn</a>
+                    </div>
+                </div>
+            </nav>
         </header>
 
-        <main class="mb-5 mx-1 p-3 rounded-3 bgradient col-lg-6">
+        <main class="mb-5 p-3 rounded-3 bgradient col-lg-8">
             <h1 class="">Get Connected with Others... </h1>
             <p>
                 A site to share your ideas and nurture with others. Take your time time in this unforgettable moments.</p>
@@ -33,6 +48,7 @@
     </div>
 
     <img src="{% static 'nightflowers.jpg' %}" class="bgg">
+    <script src="{% static 'dist/js/bootstrap.bundle.min.js' %}"></script>
 
     <style>
         .bgradient {

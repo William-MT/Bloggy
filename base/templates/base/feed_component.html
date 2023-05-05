@@ -19,4 +19,18 @@
         </div>
     </article>
     {% endfor %}
+    <div>
+        {% if posts.has_other_pages %}
+        <nav aria-label="Page navigation conatiner">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                <li><a href="?page={{ posts.previous_page_number }}" class="text-white"><button type="button" class="btn btn-outline-light me-2">&laquo; PREV </button></a></li>
+                {% endif %} {% if posts.has_next %}
+                <li>
+                    <a href="?page={{ posts.next_page_number }}" class="text-white"><button type="button" class="btn btn-outline-light me-2">NEXT &raquo;</button> </a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
 </div>

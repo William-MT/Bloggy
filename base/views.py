@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 def loginPage(req):
@@ -59,8 +60,6 @@ def registerPage(req):
 
 
 def landpage(req):
-    print('heloo')
-
     return render(req, 'base/landpage.html')
 
 
@@ -68,11 +67,24 @@ def home(req):
     q = req.GET.get('q') if req.GET.get('q') != None else ''
     posts = Post.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
     topics = Topic.objects.all()[0:5]
-    pmessages = Message.objects.filter(Q(post__topic__name__icontains=q))
+    pmessages = Message.objects.filter(Q(post__topic__name__icontains=q))[0:6]
+    post_count =  posts.count()
+    paginator = Paginator(posts, 3)  # 3 posts in each page
+    page = req.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+            # If page is not an integer deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range deliver last page of results
+        posts = paginator.page(paginator.num_pages)
+
     context = {
         'posts': posts,
         'topics': topics,
-        'post_count': posts.count(),
+        'page': page,
+        'post_count': post_count,
         'pmessages': pmessages,
     }
     return render(req, 'home.html', context)
