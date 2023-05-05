@@ -55,6 +55,12 @@
                 <a href="{% url 'login' %}">Login</a>
                 <p class="mt-5 mb-3 text-muted">&copy; 2023 Bloggy</p>
             </form>
+            {% endif %} {% if messages %}
+            <ul class="messages text-white">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
             {% endif %}
         </main>
     </div>

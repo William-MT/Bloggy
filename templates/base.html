@@ -10,13 +10,7 @@
 </head>
 
 <body>
-    {% include 'navbar.html' %} {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    {% include 'navbar.html' %}
     <div class="container-fluid py-5"></div>{% block content %} {% endblock %}
 
     <footer class="container-fluid bgradient text-white py-3 mt-3 footer mt-auto">
